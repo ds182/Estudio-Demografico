@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudio Demografico</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #000; /* Fondo negro */
+            color: #e0e0e0; /* Texto más claro */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: auto;
+            padding-bottom: 20px;
+            line-height: 1.6; /* Espaciado entre líneas para mayor legibilidad */
+        }
+        #title {
+            margin: 20px 0;
+            font-size: 42px; /* Título más grande */
+            font-weight: bold;
+            text-align: center;
+            color: #ffffff; /* Blanco puro para el título */
+            text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.4); /* Sombra más clara */
+        }
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #1e90ff; /* Azul más brillante */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 24px;
+            font-size: 18px; /* Tamaño de fuente mayor */
+            margin: 0 10px; /* Espaciado entre botones */
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+        button:hover {
+            background-color: #4682b4; /* Azul más suave en hover */
+            transform: scale(1.05); /* Efecto de crecimiento en hover */
+        }
+        #mainContainer {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+        }
+        #lugaresContainer {
+            width: 50%;
+            padding: 20px;
+            background-color: #333; /* Fondo gris oscuro */
+            color: #f5f5f5; /* Texto claro en el contenedor de lugares */
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+            display: none; /* Inicialmente oculto */
+        }
+        #lugaresContainer a {
+            color: #1e90ff; /* Enlaces más visibles */
+            text-decoration: none;
+        }
+        #lugaresContainer a:hover {
+            text-decoration: underline;
+        }
+        #demografiaContainer {
+            width: 50%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #demografiaFrame {
+            width: 100%;
+            height: 80vh;
+            border: none;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+            display: none; /* Inicialmente oculto */
+        }
+    </style>
+</head>
+<body>
+    <div id="title">Estudio General</div>
+    
+    <div id="buttonContainer">
+        <!-- Invertimos el orden de los botones -->
+        <button onclick="toggleLugares()">Map. Lugares</button>
+        <button onclick="toggleIframe()">Demografía</button>
+    </div>
+    
+    <div id="mainContainer">
+        <div id="lugaresContainer">
+            <h3>Lugares con Alto Impacto</h3>
+            <ul>
+                <li><a href="https://www.google.com/maps/search/?api=1&query=Tlalpan+(CDMX)">Tlalpan (CDMX)</a></li>
+                <li><a href="https://www.google.com/maps/search/?api=1&query=Tlalnepantla+(Estado+de+México)">Tlalnepantla (Estado de México)</a></li>
+                <li><a href="https://www.google.com/maps/search/?api=1&query=Naucalpan+(Estado+de+México)">Naucalpan (Estado de México)</a></li>
+                <li><a href="https://www.google.com/maps/search/?api=1&query=Coyoacán+(CDMX)">Coyoacán (CDMX)</a></li>
+                <li><a href="https://www.google.com/maps/search/?api=1&query=Gustavo+A.+Madero+(CDMX)">Gustavo A. Madero (CDMX)</a></li>
+                <li><a href="https://www.google.com/maps/search/?api=1&query=Cuauhtémoc+(CDMX)">Cuauhtémoc (CDMX)</a></li>
+                <li><a href="https://www.google.com/maps/search/?api=1&query=Miguel+Hidalgo+(CDMX)">Miguel Hidalgo (CDMX)</a></li>
+                <li><a href="https://www.google.com/maps/search/?api=1&query=Benito+Juárez+(CDMX)">Benito Juárez (CDMX)</a></li>
+                <li><a href="https://www.google.com/maps/search/?api=1&query=Huixquilucan+(Estado+de+México)">Huixquilucan (Estado de México)</a></li>
+            </ul>
+
+            <h3>Lugares con Menos Efectividad</h3>
+            <ul>
+                <li><a href="https://www.google.com/maps/search/?api=1&query=Naucalpan+(Estado+de+México)">Naucalpan (Estado de México)</a></li>
+                <li><a href="https://www.google.com/maps/search/?api=1&query=Ecatepec+(Estado+de+México)">Ecatepec (Estado de México)</a></li>
+                <li><a href="https://www.google.com/maps/search/?api=1&query=Tecámac+(Estado+de+México)">Tecámac (Estado de México)</a></li>
+                <li><a href="https://www.google.com/maps/search/?api=1&query=Huehuetoca+(Estado+de+México)">Huehuetoca (Estado de México)</a></li>
+                <li><a href="https://www.google.com/maps/search/?api=1&query=Zumpango+(Estado+de+México)">Zumpango (Estado de México)</a></li>
+                <li><a href="https://www.google.com/maps/search/?api=1&query=Coacalco+(Estado+de+México)">Coacalco (Estado de México)</a></li>
+                <li><a href="https://www.google.com/maps/search/?api=1&query=Nezahualcóyotl+(Estado+de+México)">Nezahualcóyotl (Estado de México)</a></li>
+                <li><a href="https://www.google.com/maps/search/?api=1&query=Chalco+(Estado+de+México)">Chalco (Estado de México)</a></li>
+                <li><a href="https://www.google.com/maps/search/?api=1&query=San+Felipe+del+Progreso+(Estado+de+México)">San Felipe del Progreso (Estado de México)</a></li>
+                <li><a href="https://www.google.com/maps/search/?api=1&query=Ocoyoacac+(Estado+de+México)">Ocoyoacac (Estado de México)</a></li>
+            </ul>
+        </div>
+
+        <div id="demografiaContainer">
+            <iframe id="demografiaFrame" src="https://ds182.github.io/INF-Demografia/" title="Demografía"></iframe>
+        </div>
+    </div>
+
+    <script>
+        function toggleIframe() {
+            const iframe = document.getElementById('demografiaFrame');
+            // Si el iframe está oculto, mostrarlo, si está visible, ocultarlo
+            if (iframe.style.display === 'none' || iframe.style.display === '') {
+                iframe.style.display = 'block';
+            } else {
+                iframe.style.display = 'none';
+            }
+        }
+
+        function toggleLugares() {
+            const lugaresContainer = document.getElementById('lugaresContainer');
+            // Si el contenedor de lugares está oculto, mostrarlo, si está visible, ocultarlo
+            if (lugaresContainer.style.display === 'none' || lugaresContainer.style.display === '') {
+                lugaresContainer.style.display = 'block';
+            } else {
+                lugaresContainer.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
